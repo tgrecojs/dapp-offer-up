@@ -55,6 +55,10 @@ const bagCounts = bag => {
  * }} OfferUpTerms
  */
 
+
+// TG: What is meta? 
+// KB: Meta-data? ... I think so.
+// The contract meta is a set of configurable properties that we must define in order for the contract to function properly.
 export const meta = {
   customTermsShape: M.splitRecord(
     { tradePrice: AmountShape },
@@ -77,12 +81,17 @@ export const start = async zcf => {
   /**
    * a new ERTP mint for items, accessed thru the Zoe Contract Facet.
    * Note: `makeZCFMint` makes the associated brand and issuer available
-   * in the contract's terms.
+   * in the contract's terms. 
+   
+   * The itemMint is used to create (mint) new assets on Agoric's blockchain.
+   * 
    *
-   * AssetKind.COPY_BAG can express non-fungible (or rather: semi-fungible)
-   * amounts such as: 3 potions and 1 map.
+   * AssetKind.COPY_BAG can express non-fungible ~~(or rather: semi-fungible)~~
+   * amounts such as: 3 potions and 1 map. * Perhaps a comment on 'Item' taking the shape of potion and/or map. *
    */
   const itemMint = await zcf.makeZCFMint('Item', AssetKind.COPY_BAG);
+
+  // TG: Get the brand so that it can be used to make offer proposals.
   const { brand: itemBrand } = itemMint.getIssuerRecord();
 
   /**
