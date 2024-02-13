@@ -29,10 +29,12 @@ import '@agoric/zoe/exported.js';
 const { Fail, quote: q } = assert;
 
 // #region bag utilities
+// TG: What is a bag? I'm inferrring that it is an array, but is there any materials I can reference to get an answer I know is correct.
+// TG: Bag vs. Array :thinking_face:
 /** @type { (xs: bigint[]) => bigint } */
 const sum = xs => xs.reduce((acc, x) => acc + x, 0n);
 
-/**
+/*?
  * @param {import('@endo/patterns').CopyBag} bag
  * @returns {bigint[]}
  */
